@@ -8,7 +8,7 @@ app.get('/', (req, res) => {
     const { temperature, converter } = req.query;
 
     if (validParameter(temperature) === true && validParameter(converter) === false) {
-        const temperaturaGraus = convertTemperature(temperature, converter);
+        const temperaturaGraus = convertTemperature(temperature, converter.toUpperCase());
 
         return res.json({ temperature: temperaturaGraus });
     }
