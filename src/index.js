@@ -7,7 +7,7 @@ const app = express();
 app.get('/', (req, res) => {
     const { temperature, converter } = req.query;
 
-    if (validParameter(temperature) && !validParameter(converter)) {
+    if (validParameter(temperature) && validParameter(converter)) {
         const temperaturaGraus = convertTemperature(temperature, converter.toUpperCase());
 
         return res.json({ temperature: temperaturaGraus });
