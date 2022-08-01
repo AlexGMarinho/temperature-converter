@@ -7,12 +7,12 @@ const app = express();
 app.get('/', (req, res) => {
     const { temperature, converter } = req.query;
 
-    if (validParameter(temperature) && validParameter(converter) === false) {
+    if (validParameter(temperature) && !validParameter(converter)) {
         const temperaturaGraus = convertTemperature(temperature, converter.toUpperCase());
 
         return res.json({ temperature: temperaturaGraus });
     }
-    return res.status(400).json({ Erro: 'Incorrect temperature or converter' });
+    return res.status(400).json({ Message: 'Incorrect temperature or converter' });
 });
 
 app.listen(8080, () => {
